@@ -40,3 +40,4 @@ Route::post('/register', [AuthController::class, 'registerAction'])->middleware(
 
 // login
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware(('guest'));
+Route::post('/login', [AuthController::class, 'loginAction'])->middleware(('guest'));
