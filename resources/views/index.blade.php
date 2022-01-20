@@ -23,5 +23,10 @@
     </div>
 
     <script src="/js/app.js"></script>
+    <script>
+        document.getElementById('message_form').addEventListener('submit', function() {
+            document.getElementById('message_input').value = '';
+        });
+    </script>
 </body>
 </html>

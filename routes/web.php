@@ -32,5 +32,5 @@ Route::post('/send-message', function(Request $request) {
         )
     );
 
-    return ['success' => true];
+    // return ['success' => true];
 });
