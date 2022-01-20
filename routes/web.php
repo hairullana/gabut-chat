@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\Message;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -34,3 +35,7 @@ Route::post('/send-message', function(Request $request) {
 
     // return ['success' => true];
 });
+
+// register
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
