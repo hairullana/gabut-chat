@@ -1,7 +1,7 @@
 <?php
 
 use App\Events\Message;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,7 +19,7 @@ use Illuminate\Http\Response;
 
 Route::get('/', function () {
     return view('index');
-});
+})->middleware('auth');
 
 // Route::get('/message/created', function() {
 //     MessageCreated::dispatch('Hairul Lana');
@@ -32,10 +32,11 @@ Route::post('/send-message', function(Request $request) {
             $request->message
         )
     );
-
-    // return ['success' => true];
-});
+})->middleware('auth');
 
 // register
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
+Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
+Route::post('/register', [AuthController::class, 'registerAction'])->middleware('guest');
+
+// login
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware(('guest'));

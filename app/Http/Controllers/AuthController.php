@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class AuthController extends Controller
 {
-    public function index() {
-        return view('register.index', [
+    public function register() {
+        return view('auth.register', [
             'title' => 'Register'
         ]);
     }
 
-    public function register(Request $request){
+    public function registerAction(Request $request){
         $data = $request->validate([
             'username' => ['required', 'min:3', 'max:16'],
             'password' => ['required', 'min:3', 'max:256', 'confirmed']
@@ -26,6 +26,12 @@ class RegisterController extends Controller
         User::create($data);
     
         return redirect('/login')->with('success', 'Registration successfull! Please login.');
+    }
+
+    public function login() {
+        return view('auth.login', [
+            'title' => 'Login'
+        ]);
     }
 
 }

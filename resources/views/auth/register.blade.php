@@ -15,14 +15,14 @@
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
-          <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
+          <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
           @error('password')
             <div class="form-text">{{ error('password') }}</div>
           @enderror
         </div>
         <div class="mb-3">
           <label for="password_confirmation" class="form-label">Retype Password</label>
-          <input type="text" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" required>
+          <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" required>
           @error('password_confirmation')
             <div class="form-text">{{ error('password_confirmation') }}</div>
           @enderror
