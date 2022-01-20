@@ -10,8 +10,9 @@
 <body>
     <div class="app">
         <header>
-            <h1>Gaboet</h1>
-            <input type="text" name="username" id="username" value="Username: {{ Auth::user()->username }}" disabled>
+            <h1>Gaboet Chat</h1>
+            <input type="text" value="Username {{ Auth::user()->username }}" disabled>
+            <input type="hidden" name="username" id="username" value="{{ Auth::user()->username }}">
         </header>
 
         <div id="messages"></div>
