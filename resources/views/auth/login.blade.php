@@ -4,24 +4,35 @@
   <div class="row justify-content-center d-flex">
     <div class="col-md-6">
       <h1 class="text-center mb-3">Login</h1>
+
+      @if(session()->has('success'))
+        <div class="alert alert-success" role="alert">
+          {{ session('success') }}
+        </div>
+      @endif
+
       <form method="post" action="/login">
         @csrf
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" required autofocus>
+          <input value="{{ old('username') }}" type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" required autofocus>
           @error('username')
-            <div class="form-text">{{ error('username') }}</div>
+            <div class="form-text text-danger">{{ $message }}</div>
           @enderror
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
           @error('password')
-            <div class="form-text">{{ error('password') }}</div>
+            <div class="form-text text-danger">{{ $message }}</div>
           @enderror
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
+
+      <p class="mt-2">
+        Not have an account ? <a href="/register">Register here</a>
+      </p>
     </div>
   </div>
 @endsection
