@@ -19,7 +19,7 @@ use Illuminate\Http\Response;
 
 Route::get('/', function () {
     return view('index', [
-        'title' => 'Public Chat'
+        'title' => 'Home'
     ]);
 })->middleware('auth');
 
@@ -39,3 +39,15 @@ Route::post('/register', [AuthController::class, 'registerAction'])->middleware(
 // login
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware(('guest'));
 Route::post('/login', [AuthController::class, 'loginAction'])->middleware(('guest'));
+
+// chat
+Route::get('/chat/public', function() {
+    return view('chat.public', [
+        'title' => 'Public Chat'
+    ]);
+});
+Route::get('/chat/private', function() {
+    return view('chat.private', [
+        'title' => 'Private Chat'
+    ]);
+});
