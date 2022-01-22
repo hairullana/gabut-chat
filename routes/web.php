@@ -1,10 +1,11 @@
 <?php
 
 use App\Events\Message;
-use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,3 +54,6 @@ Route::get('/chat/private', function() {
         'title' => 'Private Chat'
     ]);
 })->middleware('auth');
+
+// admin/user
+Route::resource('/admin/user', UserController::class)->middleware('auth');

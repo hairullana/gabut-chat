@@ -1,7 +1,7 @@
 @extends('templates.layout')
 
 @section('body')
-  <h1 class="text-center my-5">Welcome back, {{ Auth::user()->username }}</h1>
+  <h1 class="text-center my-5">Welcome back, {{ Auth::user()->username }}!</h1>
 
   <h4 class="text-center">
     Are you unemployed?<br>
