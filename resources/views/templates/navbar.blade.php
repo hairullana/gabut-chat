@@ -25,7 +25,11 @@
             <a class="nav-link active" aria-current="page" href="/">Home</a>
             <a class="nav-link" href="/private">Private Chat</a>
             <a class="nav-link" href="/public">Public Chat</a>
-            <a class="nav-link disabled" href="/login">Login</a>
+            @if (Auth::check())
+              <a class="nav-link disabled" href="/logout">Logout</a>
+            @else
+              <a class="nav-link disabled" href="/login">Login</a>
+            @endif
           </div>
         </div>
       </div>

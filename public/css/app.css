@@ -46,7 +46,7 @@ header {
   padding-right: 16px;
 }
 
-h1 {
+h1.title {
   color: #fff;
   text-transform: uppercase;
   text-align: center;

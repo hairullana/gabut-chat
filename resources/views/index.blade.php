@@ -3,7 +3,7 @@
 @section('body')
   <div class="app">
     <header>
-        <h1>Gaboet Chat</h1>
+        <h1 class="title">Gaboet Chat</h1>
         <input type="text" value="Username: {{ Auth::user()->username }}" disabled>
         <input type="hidden" name="username" id="username" value="{{ Auth::user()->username }}">
     </header>
