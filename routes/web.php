@@ -39,15 +39,17 @@ Route::post('/register', [AuthController::class, 'registerAction'])->middleware(
 // login
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware(('guest'));
 Route::post('/login', [AuthController::class, 'loginAction'])->middleware(('guest'));
+Route::get('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
 
 // chat
 Route::get('/chat/public', function() {
     return view('chat.public', [
         'title' => 'Public Chat'
     ]);
-});
+})->middleware('auth');
+
 Route::get('/chat/private', function() {
     return view('chat.private', [
         'title' => 'Private Chat'
     ]);
-});
+})->middleware('auth');
