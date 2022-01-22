@@ -2,17 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Bicyclette', sans-serif;
 }
 
-body{
-  background-color: #eee;
+.navbar {
+  background-color: #101522 !important;
 }
 
 input, button {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   border: none;
   outline: none;
   background: none;
@@ -30,19 +29,19 @@ input {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 91vh;
 }
 
 header {
   display: flex;
-  padding-top: 128px;
+  padding-top: 32px;
   padding-bottom: 32px;
-  background-color: #8c38ff;
-  background-image: linear-gradient(to bottom, #8c38ff, #6317ce);
+  background-color: #101522;
+  /* background-image: linear-gradient(to bottom, #101522, #202020); */
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); */
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -81,7 +80,7 @@ h1 {
 }
 
 .message strong {
-  color: #8c38ff;
+  color: #111111;
   font-weight: 600;
 }
 
@@ -97,7 +96,7 @@ h1 {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #8c38ff;
+  background-color: #101522;
   padding: 4px 8px;
   color: #fff;
   text-transform: uppercase;

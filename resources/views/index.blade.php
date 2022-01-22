@@ -1,33 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gaboet Chat</title>
-    <link rel="stylesheet" href="/css/app.css">
-</head>
-<body>
-    <div class="app">
-        <header>
-            <h1>Gaboet Chat</h1>
-            <input type="text" value="Username: {{ Auth::user()->username }}" disabled>
-            <input type="hidden" name="username" id="username" value="{{ Auth::user()->username }}">
-        </header>
+@extends('templates.layout-no-footer')
 
-        <div id="messages"></div>
+@section('body')
+  <div class="app">
+    <header>
+        <h1>Gaboet Chat</h1>
+        <input type="text" value="Username: {{ Auth::user()->username }}" disabled>
+        <input type="hidden" name="username" id="username" value="{{ Auth::user()->username }}">
+    </header>
 
-        <form id="message_form">
-            <input type="text" name="message" id="message_input" placeholder="Message" autocomplete="off">
-            <button id="message_send">Send</button>
-        </form>
-    </div>
+    <div id="messages"></div>
 
-    <script src="/js/app.js"></script>
-    <script>
-        document.getElementById('message_form').addEventListener('submit', function() {
-            document.getElementById('message_input').value = '';
-        });
-    </script>
-</body>
-</html>
+    <form id="message_form">
+        <input type="text" name="message" id="message_input" placeholder="Message" autocomplete="off">
+        <button id="message_send">Send</button>
+    </form>
+  </div>
+
+  <script src="/js/app.js"></script>
+  <script>
+    document.getElementById('message_form').addEventListener('submit', function() {
+        document.getElementById('message_input').value = '';
+    });
+  </script>
+@endsection

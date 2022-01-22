@@ -18,12 +18,10 @@ use Illuminate\Http\Response;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('index', [
+        'title' => 'Public Chat'
+    ]);
 })->middleware('auth');
-
-// Route::get('/message/created', function() {
-//     MessageCreated::dispatch('Hairul Lana');
-// });
 
 Route::post('/send-message', function(Request $request) {
     event(
