@@ -18,7 +18,7 @@
         <div id="messages"></div>
 
         <form id="message_form">
-            <input type="text" name="message" id="message_input" placeholder="Message">
+            <input type="text" name="message" id="message_input" placeholder="Message" autocomplete="off">
             <button id="message_send">Send</button>
         </form>
     </div>
