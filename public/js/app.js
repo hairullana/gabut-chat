@@ -2065,41 +2065,78 @@ var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var messages_el = document.getElementById('messages');
-var username_input = document.getElementById('username');
-var message_input = document.getElementById('message_input');
-var message_form = document.getElementById('message_form');
-message_form.addEventListener('submit', function (e) {
-  e.preventDefault();
-  var has_errors = false;
+if (document.getElementById('messageType').value == 'public') {
+  // public message
+  var messages_el = document.getElementById('messages');
+  var username_input = document.getElementById('username');
+  var message_input = document.getElementById('message_input');
+  var message_form = document.getElementById('message_form');
+  message_form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var has_errors = false;
 
-  if (username_input.value == '') {
-    alert('Please enter a username');
-    has_errors = true;
-  }
-
-  if (message_input.value == '') {
-    alert('Please enter a message');
-    has_errors = true;
-  }
-
-  if (has_errors) {
-    return;
-  }
-
-  var options = {
-    method: 'post',
-    url: '/send-message',
-    data: {
-      username: username_input.value,
-      message: message_input.value
+    if (username_input.value == '') {
+      alert('Please enter a username');
+      has_errors = true;
     }
-  };
-  axios(options);
-});
-window.Echo.channel('chat').listen('.message', function (e) {
-  messages_el.innerHTML += "\n  <div class='message'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n  ");
-});
+
+    if (message_input.value == '') {
+      alert('Please enter a message');
+      has_errors = true;
+    }
+
+    if (has_errors) {
+      return;
+    }
+
+    var options = {
+      method: 'post',
+      url: '/send-message',
+      data: {
+        username: username_input.value,
+        message: message_input.value
+      }
+    };
+    axios(options);
+  });
+  window.Echo.channel('chat').listen('.message', function (e) {
+    messages_el.innerHTML += "\n    <div class='message'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n    ");
+  });
+} else if (document.getElementById('messageType').value == 'private') {
+  // private message
+  var privateMessageElement = document.getElementById('privateMessage');
+  var privateMessageInput = document.getElementById('privateMessageInput');
+  var privateMessageForm = document.getElementById('privateMessageForm');
+  var conversationId = document.getElementById('conversationId');
+  var userId = document.getElementById('userId');
+  privateMessageForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var has_errors = false;
+
+    if (privateMessageInput.value == '') {
+      alert('Please enter a message');
+      has_errors = true;
+    }
+
+    if (has_errors) {
+      return;
+    }
+
+    var options = {
+      method: 'post',
+      url: '/send-private-message',
+      data: {
+        conversation_id: conversationId.value,
+        user_id: userId.value,
+        message: privateMessageInput.value
+      }
+    };
+    axios(options);
+  });
+  window.Echo.channel('privateChat').listen('.privateMessage', function (e) {
+    privateMessageElement.innerHTML += "\n    <li class=\"clearfix\">\n        <div class=\"message-data\">\n            <span class=\"message-data-time\">10:15 AM, Today</span>\n        </div>\n        <div class=\"message my-message\">".concat(e.message, "</div>\n    </li>\n    ");
+  });
+}
 
 /***/ }),
 

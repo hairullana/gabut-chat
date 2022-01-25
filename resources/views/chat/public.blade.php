@@ -1,6 +1,7 @@
 @extends('templates.layout-no-footer')
 
 @section('body')
+<input type="hidden" id="messageType" value="public">
   <div class="app">
     <header>
         <h1 class="title">Gaboet Chat</h1>

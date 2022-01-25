@@ -1,6 +1,9 @@
 @extends('templates.layout-no-footer')
 
 @section('body')
+
+<input type="hidden" id="messageType" value="private">
+
 <div class="private-chat row clearfix mt-5">
   <div class="col-lg-12">
       <div class="card chat-app">
@@ -46,8 +49,8 @@
               </div>
           </div>
           <div class="chat-history">
-              <ul class="m-b-0">
-                  <li class="clearfix">
+              <ul class="m-b-0" id="privateMessage">
+                  {{-- <li class="clearfix">
                       <div class="message-data text-right">
                           <span class="message-data-time">10:10 AM, Today</span>
                           <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
@@ -65,19 +68,30 @@
                           <span class="message-data-time">10:15 AM, Today</span>
                       </div>
                       <div class="message my-message">Project has been already finished and I have results to show you.</div>
-                  </li>
+                  </li> --}}
               </ul>
           </div>
-          <div class="chat-message clearfix">
-              <div class="input-group mb-0">
-                  <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-send"></i></span>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Enter text here...">                                    
+          <div class="chatMessageClearfix">
+            <form id="privateMessageForm">
+              <input type="hidden" name="conversation_id" id="conversationId" value="{{ $conversation->id }}">
+              <input type="hidden" name="user_id" id="userId" value="{{ Auth::user()->id }}">
+              <div class="input-group mb-1">
+                <input type="text" name="message" id="privateMessageInput" class="form-control" placeholder="Enter text here...">                                    
+                <div class="input-group-prepend">
+                  <button class="btn btn-primary">Send</button>
+                </div>
               </div>
+            </form>
           </div>
           </div>
       </div>
   </div>
 </div>
+
+<script src="/js/app.js"></script>
+<script>
+  document.getElementById('privateMessageForm').addEventListener('submit', function() {
+      document.getElementById('privateMessageInput').value = '';
+  });
+</script>
 @endsection
