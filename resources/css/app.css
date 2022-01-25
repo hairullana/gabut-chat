@@ -150,6 +150,14 @@ h1.title {
   cursor: pointer
 }
 
+.people-list .chat-list li a {
+  color: #111111;
+}
+
+.people-list .chat-list li a:hover {
+  text-decoration: none;
+}
+
 .people-list .chat-list li.active {
   background: #efefef
 }

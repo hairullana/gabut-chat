@@ -14,11 +14,13 @@
               <ul class="list-unstyled chat-list mt-2 mb-0">
                 @foreach ($users as $user)
                   <li class="clearfix">
+                    <a href="/chat/private/{{ $user->id }}">
                       <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
-                      <a href="/chat/private/{{ $user->id }}" class="about">
+                      <div class="about">
                           <div class="name">{{ $user->username }}</div>
                           <div class="status"> <i class="fa fa-circle offline"></i> left x mins ago </div>                                            
-                      </a>
+                      </div>
+                    </a>
                   </li>
                 @endforeach
               </ul>
