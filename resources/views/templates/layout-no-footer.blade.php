@@ -1,2 +1,4 @@
 @include('templates.navbar')
-@yield('body')
+<div class="mt-5">
+  @yield('body')
+</div>

@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\User;
 use App\Events\Message;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -51,9 +53,18 @@ Route::get('/chat/public', function() {
 
 Route::get('/chat/private', function() {
     return view('chat.private', [
-        'title' => 'Private Chat'
+        'title' => 'Private Chat',
+        'users' => User::where('id', '!=', Auth::user()->id)->latest()->get()
     ]);
 })->middleware('auth');
+
+Route::get('/chat/private/{user:id}', function($id) {
+    return view('chat.private-chat', [
+        'title' => 'Private Chat',
+        'u' => User::find($id),
+        'users' => User::where('id', '!=', Auth::user()->id)->latest()->get()
+    ]);
+});
 
 // admin/user
 Route::resource('/admin/user', UserController::class)->middleware('auth');
