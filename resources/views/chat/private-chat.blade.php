@@ -48,8 +48,8 @@
                   </div> --}}
               </div>
           </div>
-          <div class="chat-history">
-              <ul class="m-b-0" id="privateMessage">
+          <div class="chat-history" id="chat-history">
+              <ul id="privateMessage">
                 {{-- {{ dd($messages->messages->message) }} --}}
                 @foreach ($messages as $message)
                   @if ($message->user_id == Auth::user()->id)
@@ -105,6 +105,9 @@
   </div>
 </div>
 
+<script>
+  const userIdLogin = "{{ Auth::user()->id }}"
+</script>
 <script src="/js/app.js"></script>
 <script>
   document.getElementById('privateMessageForm').addEventListener('submit', function() {

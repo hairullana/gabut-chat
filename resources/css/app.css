@@ -76,7 +76,7 @@ h1.title {
   padding: 8px 16px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
   font-weight: 400;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 }
 
 .message strong {
@@ -112,7 +112,7 @@ h1.title {
   background: #fff;
   transition: .5s;
   border: 0;
-  margin-bottom: 30px;
+  padding-top: 5px;
   border-radius: .55rem;
   position: relative;
   width: 100%;
@@ -204,7 +204,9 @@ h1.title {
 
 .chat .chat-history {
   padding: 20px;
-  border-bottom: 2px solid #fff
+  border-bottom: 2px solid #fff;
+  overflow-y: auto;
+  height: 67vh;
 }
 
 .chat .chat-history ul {
@@ -342,18 +344,18 @@ h1.title {
       border-radius: 0.55rem 0.55rem 0 0
   }
   .chat-app .chat-history {
-      height: 300px;
+      /* height: 300px; */
       overflow-x: auto
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
   .chat-app .chat-list {
-      height: 650px;
+      /* height: 650px; */
       overflow-x: auto
   }
   .chat-app .chat-history {
-      height: 600px;
+      height: 70vh;
       overflow-x: auto
   }
 }

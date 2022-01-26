@@ -2103,6 +2103,18 @@ if (document.getElementById('messageType').value == 'public') {
     messages_el.innerHTML += "\n    <div class='message'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n    ");
   });
 } else if (document.getElementById('messageType').value == 'private') {
+  var scrollToBottom = function scrollToBottom() {
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+  };
+
+  var getChat = function getChat() {
+    shouldScroll = chatHistory.scrollTop + chatHistory.clientHeight === chatHistory.scrollHeight;
+
+    if (!shouldScroll) {
+      scrollToBottom();
+    }
+  };
+
   // private message
   var privateMessageElement = document.getElementById('privateMessage');
   var privateMessageInput = document.getElementById('privateMessageInput');
@@ -2133,8 +2145,14 @@ if (document.getElementById('messageType').value == 'public') {
     };
     axios(options);
   });
+  var chatHistory = document.getElementById('chat-history');
+  scrollToBottom();
   window.Echo.channel('privateChat').listen('.privateMessage', function (e) {
-    privateMessageElement.innerHTML += "\n    <li class=\"clearfix\">\n        <div class=\"message-data\">\n            <span class=\"message-data-time\">10:15 AM, Today</span>\n        </div>\n        <div class=\"message my-message\">".concat(e.message, "</div>\n    </li>\n    ");
+    if (e.userId == userIdLogin) {
+      privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n        <div class=\"message-data text-right\">\n            <span class=\"message-data-time\">10:10 AM, Today</span>\n            <img src=\"https://bootdey.com/img/Content/avatar/avatar7.png\" alt=\"avatar\">\n        </div>\n        <div class=\"message other-message float-right\">\n          ".concat(e.message, "\n        </div>\n      </li>\n      ");
+    } else {
+      privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n          <div class=\"message-data\">\n              <span class=\"message-data-time\">10:15 AM, Today</span>\n          </div>\n          <div class=\"message my-message\">".concat(e.message, "</div>\n      </li>\n      ");
+    }
   });
 }
 
