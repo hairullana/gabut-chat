@@ -2099,7 +2099,7 @@ if (document.getElementById('messageType').value == 'public') {
     };
     axios(options);
   });
-  window.Echo.channel('chat').listen('.message', function (e) {
+  window.Echo.channel('chat').listen('MessagePublic', function (e) {
     messages_el.innerHTML += "\n    <div class='message'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n    ");
   });
 } else if (document.getElementById('messageType').value == 'private') {
@@ -2139,7 +2139,7 @@ if (document.getElementById('messageType').value == 'public') {
   });
   var chatHistory = document.getElementById('chat-history');
   scrollToBottom();
-  window.Echo.channel('privateChat').listen('.privateMessage', function (e) {
+  window.Echo["private"]('privateChat.' + conversationId.value).listen('MessagePrivate', function (e) {
     if (e.userId == userIdLogin) {
       privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n        <div class=\"message-data text-right\">\n            <span class=\"message-data-time\">10:10 AM, Today</span>\n            <img src=\"https://bootdey.com/img/Content/avatar/avatar7.png\" alt=\"avatar\">\n        </div>\n        <div class=\"message other-message float-right\">\n          ".concat(e.message, "\n        </div>\n      </li>\n      "); // scrollToBottom();
     } else {
@@ -2183,7 +2183,23 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: "334dc2708983693a340a",
   cluster: "eu",
-  forceTLS: true
+  forceTLS: true // authorizer: (channel) => {
+  //     return {
+  //         authorize: (socketId, callback) => {
+  //             axios.post('/api/broadcasting/auth', {
+  //                 socket_id: socketId,
+  //                 channel_name: channel.name
+  //             })
+  //             .then(response => {
+  //                 callback(false, response.data);
+  //             })
+  //             .catch(error => {
+  //                 callback(true, error);
+  //             });
+  //         }
+  //     };
+  // },
+
 }); // window.Echo.channel('messages').listen('MessageCreated', (event) => {
 //   console.log(event);
 // });

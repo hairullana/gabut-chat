@@ -34,7 +34,7 @@ class MessagePublic implements ShouldBroadcast
         // return new PrivateChannel('messages');
     }
 
-    public function broadcastAs(){
-        return 'message';
-    }
+    // public function broadcastAs(){
+    //     return 'message';
+    // }
 }

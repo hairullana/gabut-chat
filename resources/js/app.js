@@ -41,7 +41,7 @@ if(document.getElementById('messageType').value == 'public'){
     axios(options);
   });
   
-  window.Echo.channel('chat').listen('.message', (e) => {
+  window.Echo.channel('chat').listen('MessagePublic', (e) => {
     messages_el.innerHTML += `
     <div class='message'><strong> ${e.username}:</strong> ${e.message}</div>
     `
@@ -90,7 +90,7 @@ if(document.getElementById('messageType').value == 'public'){
   scrollToBottom();
   
 
-  window.Echo.channel('privateChat').listen('.privateMessage', function(e) {
+  window.Echo.private('privateChat.' + conversationId.value).listen('MessagePrivate', function(e) {
     if(e.userId == userIdLogin){
       privateMessageElement.innerHTML += `
       <li class="clearfix">

@@ -25,10 +25,10 @@ class MessagePrivate implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return new Channel('privateChat');
+        return new PrivateChannel('privateChat.' . $this->conversationId);
     }
 
-    public function broadcastAs(){
-        return 'privateMessage';
-    }
+    // public function broadcastAs(){
+    //     return 'privateMessage';
+    // }
 }

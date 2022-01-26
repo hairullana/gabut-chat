@@ -66,13 +66,13 @@ Route::get('/chat/private/{user:id}', function($id) {
     $user2 = User::find($id)->id;
 
     if(Conversation::where('user_one', $user1)->where('user_two', $user2)->first()){
-        $conversation = Conversation::where('user_one', $user1)->where('user_two', $user2)->first() ;
+        $conversation = Conversation::where('user_one', $user1)->where('user_two', $user2)->first();
     } else if(Conversation::where('user_one', $user2)->where('user_two', $user1)->first()){
-        $conversation = Conversation::where('user_one', $user2)->where('user_two', $user1)->first() ;
+        $conversation = Conversation::where('user_one', $user2)->where('user_two', $user1)->first();
     } else {
         Conversation::create([
-            'user_one' => 1,
-            'user_two' => 2
+            'user_one' => $user1,
+            'user_two' => $user2
         ]);
 
         $conversation = Conversation::latest()->first();

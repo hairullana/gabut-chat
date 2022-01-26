@@ -25,6 +25,22 @@ window.Echo = new Echo({
     key: process.env.MIX_PUSHER_APP_KEY,
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true
+    // authorizer: (channel) => {
+    //     return {
+    //         authorize: (socketId, callback) => {
+    //             axios.post('/api/broadcasting/auth', {
+    //                 socket_id: socketId,
+    //                 channel_name: channel.name
+    //             })
+    //             .then(response => {
+    //                 callback(false, response.data);
+    //             })
+    //             .catch(error => {
+    //                 callback(true, error);
+    //             });
+    //         }
+    //     };
+    // },
 });
 
 // window.Echo.channel('messages').listen('MessageCreated', (event) => {

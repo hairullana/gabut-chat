@@ -93,7 +93,7 @@
               <input type="hidden" name="conversation_id" id="conversationId" value="{{ $conversation->id }}">
               <input type="hidden" name="user_id" id="userId" value="{{ Auth::user()->id }}">
               <div class="input-group mb-1">
-                <input type="text" name="message" id="privateMessageInput" class="form-control" placeholder="Enter text here...">                                    
+                <input type="text" name="message" id="privateMessageInput" class="form-control" placeholder="Enter text here..." autocomplete="off">                                    
                 <div class="input-group-prepend">
                   <button class="btn btn-primary">Send</button>
                 </div>
