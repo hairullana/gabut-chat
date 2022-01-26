@@ -7,7 +7,12 @@
 <div class="private-chat row clearfix mt-5">
   <div class="col-lg-12">
       <div class="card chat-app">
-          <div id="plist" class="people-list">
+        <div id="plist" class="people-list">
+
+          <div class="profile text-center mb-3">
+            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" style="width: 40%; float: none;" alt="avatar">
+            <h4 class="m-b-0">{{ Auth::user()->username }}</h4>
+          </div>
               <div class="input-group">
                   <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-search"></i></span>
@@ -18,7 +23,7 @@
                 @foreach ($users as $user)
                   <li class="clearfix">
                     <a href="/chat/private/{{ $user->id }}">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
                       <div class="about">
                           <div class="name">{{ $user->username }}</div>
                           <div class="status"> <i class="fa fa-circle offline"></i> left x mins ago </div>                                            
@@ -49,7 +54,7 @@
                     <li class="clearfix">
                       <div class="message-data text-right">
                           <span class="message-data-time">{{ date_format($message->created_at, "H:i (d M Y)") }}</span>
-                          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
                       </div>
                       <div class="message other-message float-right">
                         {{ $message->message }}
