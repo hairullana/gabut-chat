@@ -50,13 +50,30 @@
           </div>
           <div class="chat-history">
               <ul class="m-b-0" id="privateMessage">
-                  {{-- <li class="clearfix">
+                {{-- {{ dd($messages->messages->message) }} --}}
+                @foreach ($messages as $message)
+                  @if ($message->user_id == Auth::user()->id)
+                    <li class="clearfix">
                       <div class="message-data text-right">
                           <span class="message-data-time">10:10 AM, Today</span>
                           <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
                       </div>
-                      <div class="message other-message float-right"> Hi Aiden, how are you? How is the project coming along? </div>
-                  </li>
+                      <div class="message other-message float-right">
+                        {{ $message->message }}
+                      </div>
+                    </li>
+                  @else
+                    <li class="clearfix">
+                      <div class="message-data">
+                          <span class="message-data-time">10:12 AM, Today</span>
+                      </div>
+                      <div class="message my-message">
+                        {{ $message->message }}
+                      </div>                                    
+                    </li>
+                  @endif
+                @endforeach
+                  {{-- 
                   <li class="clearfix">
                       <div class="message-data">
                           <span class="message-data-time">10:12 AM, Today</span>

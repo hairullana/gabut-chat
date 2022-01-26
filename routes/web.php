@@ -78,11 +78,17 @@ Route::get('/chat/private/{user:id}', function($id) {
         $conversation = Conversation::latest()->first()->first() ;
     }
 
+    $messages = Message::where(function($query) use ($id){
+                    $query->where('user_id', Auth::user()->id)
+                    ->orWhere('user_id', $id);
+                })->where('conversation_id', $conversation->id)->get();
+
     return view('chat.private-chat', [
         'title' => 'Private Chat',
         'u' => User::find($id),
         'users' => User::where('id', '!=', Auth::user()->id)->latest()->get(),
-        'conversation' => $conversation
+        'conversation' => $conversation,
+        'messages' => $messages
     ]);
 });
 
