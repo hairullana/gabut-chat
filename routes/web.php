@@ -75,7 +75,7 @@ Route::get('/chat/private/{user:id}', function($id) {
             'user_two' => 2
         ]);
 
-        $conversation = Conversation::latest()->first()->first() ;
+        $conversation = Conversation::latest()->first();
     }
 
     $messages = Message::where(function($query) use ($id){
