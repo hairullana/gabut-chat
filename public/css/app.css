@@ -132,6 +132,19 @@ h1.title {
   border-left: 1px solid #eaeaea
 }
 
+.chat {
+  position: relative;
+  height: 90vh;
+}
+
+.chat .start-chat{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  transform: translateY(-50%);
+}
+
 .people-list {
   transition: .5s
 }
@@ -335,8 +348,9 @@ h1.title {
       left: 0
   }
   .chat-app .chat {
-      margin: 0
+      margin: 0;
   }
+  
   .chat-app .chat .chat-header {
       border-radius: 0.55rem 0.55rem 0 0
   }
@@ -355,6 +369,7 @@ h1.title {
       height: 70vh;
       overflow-x: auto
   }
+  
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
@@ -371,3 +386,5 @@ h1.title {
 .row {
   margin: 0 !important;
 }
+
+

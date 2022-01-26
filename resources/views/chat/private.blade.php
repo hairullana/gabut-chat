@@ -26,7 +26,7 @@
               </ul>
           </div>
           <div class="chat">
-            <h1 class="my-5 text-center">Start Chat</h1>
+            <h1 class="start-chat">Start Chat</h1>
           </div>
       </div>
   </div>
