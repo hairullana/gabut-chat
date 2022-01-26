@@ -79,24 +79,17 @@ if(document.getElementById('messageType').value == 'public'){
     }
   
     axios(options);
-  });
-  
+  })
+
+
   const chatHistory = document.getElementById('chat-history');
 
   function scrollToBottom() {
     chatHistory.scrollTop = chatHistory.scrollHeight;
   }
-
-  function getChat(){
-    shouldScroll = chatHistory.scrollTop + chatHistory.clientHeight === chatHistory.scrollHeight;
-
-    if (!shouldScroll) {
-      scrollToBottom();
-    }
-  }
-
   scrollToBottom();
   
+
   window.Echo.channel('privateChat').listen('.privateMessage', function(e) {
     if(e.userId == userIdLogin){
       privateMessageElement.innerHTML += `
@@ -110,6 +103,7 @@ if(document.getElementById('messageType').value == 'public'){
         </div>
       </li>
       `
+      // scrollToBottom();
     } else {
       privateMessageElement.innerHTML += `
       <li class="clearfix">
@@ -120,5 +114,14 @@ if(document.getElementById('messageType').value == 'public'){
       </li>
       `
     }
+    // const chatHistory = document.getElementById('chat-history');
+    scrollToBottom();
+
+    
   })
+
+  
+
+  
+
 }
