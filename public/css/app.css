@@ -64,7 +64,7 @@ h1.title {
 
 #messages {
   flex: 1 1 0%;
-  overflow: scroll;
+  overflow-y: scroll;
   padding: 16px;
 }
 

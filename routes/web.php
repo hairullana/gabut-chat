@@ -40,7 +40,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
 
 // chat
 Route::get('/chat/public', function() {
-    return view('chat.public', [
+    return view('chat.public.index', [
         'title' => 'Public Chat'
     ]);
 })->middleware('auth');
@@ -55,7 +55,7 @@ Route::post('/send-message', function(Request $request) {
 })->middleware('auth');
 
 Route::get('/chat/private', function() {
-    return view('chat.private', [
+    return view('chat.private.index', [
         'title' => 'Private Chat',
         'users' => User::where('id', '!=', Auth::user()->id)->latest()->get()
     ]);
@@ -83,7 +83,7 @@ Route::get('/chat/private/{user:id}', function($id) {
                     ->orWhere('user_id', $id);
                 })->where('conversation_id', $conversation->id)->get();
 
-    return view('chat.private-chat', [
+    return view('chat..private.chat', [
         'title' => 'Private Chat',
         'u' => User::find($id),
         'users' => User::where('id', '!=', Auth::user()->id)->latest()->get(),
