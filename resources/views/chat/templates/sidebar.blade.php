@@ -15,7 +15,7 @@
   <ul class="list-unstyled chat-list mt-2 mb-0">
     @foreach ($users as $user)
       <li class="clearfix">
-        <a href="/chat/private/{{ $user->id }}">
+        <a href="/chat/private/{{ $user->username }}">
           <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
           <div class="about">
             <div class="name">{{ $user->username }}</div>

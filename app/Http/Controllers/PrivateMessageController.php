@@ -12,31 +12,33 @@ use Illuminate\Support\Facades\Auth;
 
 class PrivateMessageController extends Controller
 {
-  public function index($id){
-    $user1 = User::find(Auth::user()->id)->id;
-    $user2 = User::find($id)->id;
+  public function index(User $user){
+    $id1 = User::find(Auth::user()->id)->id;
+    $id2 = $user->id;
 
-    if(Conversation::where('user_one', $user1)->where('user_two', $user2)->first()){
-      $conversation = Conversation::where('user_one', $user1)->where('user_two', $user2)->first();
-    } else if(Conversation::where('user_one', $user2)->where('user_two', $user1)->first()){
-      $conversation = Conversation::where('user_one', $user2)->where('user_two', $user1)->first();
+    if($id1 === $id2) return abort(404);
+
+    if(Conversation::where('user_one', $id1)->where('user_two', $id2)->first()){
+      $conversation = Conversation::where('user_one', $id1)->where('user_two', $id2)->first();
+    } else if(Conversation::where('user_one', $id2)->where('user_two', $id1)->first()){
+      $conversation = Conversation::where('user_one', $id2)->where('user_two', $id1)->first();
     } else {
       Conversation::create([
-        'user_one' => $user1,
-        'user_two' => $user2
+        'user_one' => $id1,
+        'user_two' => $id2
       ]);
 
       $conversation = Conversation::latest()->first();
     }
 
-    $messages = Message::where(function($query) use ($id){
+    $messages = Message::where(function($query) use ($id2){
                   $query->where('user_id', Auth::user()->id)
-                  ->orWhere('user_id', $id);
+                  ->orWhere('user_id', $id2);
                 })->where('conversation_id', $conversation->id)->get();
 
     return view('chat..private.chat', [
       'title' => 'Private Chat',
-      'u' => User::find($id),
+      'u' => User::find($id2),
       'users' => User::where('id', '!=', Auth::user()->id)->latest()->get(),
       'conversation' => $conversation,
       'messages' => $messages

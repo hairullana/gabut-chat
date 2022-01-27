@@ -1,14 +1,5 @@
 <?php
 
-use App\Models\User;
-use App\Models\Message;
-use App\Models\Conversation;
-use Illuminate\Http\Request;
-use App\Events\MessagePublic;
-use Illuminate\Http\Response;
-use App\Events\MessagePrivate;
-use App\Models\PublicMessage;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PrivateMessageController;
@@ -48,7 +39,7 @@ Route::middleware('auth')->group(function(){
   Route::post('/send-message', [PublicMessageController::class, 'sendMessage']);
   // PRIVATE CHAT
   Route::get('/chat/private', [PrivateMessageController::class, 'indexStartChat']);
-  Route::get('/chat/private/{user:id}', [PrivateMessageController::class, 'index']);
+  Route::get('/chat/private/{user:username}', [PrivateMessageController::class, 'index']);
   Route::post('/send-private-message', [PrivateMessageController::class, 'sendMessage']);
 });
 
