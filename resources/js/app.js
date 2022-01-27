@@ -41,10 +41,18 @@ if(document.getElementById('messageType').value == 'public'){
     axios(options);
   });
   
+  const chatHistory = document.getElementById('messages');
+
+  function scrollToBottom() {
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+  }
+  scrollToBottom();
+
   window.Echo.channel('chat').listen('MessagePublic', (e) => {
     messages_el.innerHTML += `
-    <div class='message'><strong> ${e.username}:</strong> ${e.message}</div>
+    <div class='message my-2'><strong> ${e.username}:</strong> ${e.message}</div>
     `
+    scrollToBottom();
   });
 } else if(document.getElementById('messageType').value == 'private') {
   // private message

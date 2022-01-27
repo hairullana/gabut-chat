@@ -2066,6 +2066,10 @@ var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 if (document.getElementById('messageType').value == 'public') {
+  var scrollToBottom = function scrollToBottom() {
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+  };
+
   // public message
   var messages_el = document.getElementById('messages');
   var username_input = document.getElementById('username');
@@ -2099,12 +2103,15 @@ if (document.getElementById('messageType').value == 'public') {
     };
     axios(options);
   });
+  var chatHistory = document.getElementById('messages');
+  scrollToBottom();
   window.Echo.channel('chat').listen('MessagePublic', function (e) {
-    messages_el.innerHTML += "\n    <div class='message'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n    ");
+    messages_el.innerHTML += "\n    <div class='message my-2'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n    ");
+    scrollToBottom();
   });
 } else if (document.getElementById('messageType').value == 'private') {
-  var scrollToBottom = function scrollToBottom() {
-    chatHistory.scrollTop = chatHistory.scrollHeight;
+  var _scrollToBottom = function _scrollToBottom() {
+    _chatHistory.scrollTop = _chatHistory.scrollHeight;
   };
 
   // private message
@@ -2137,8 +2144,11 @@ if (document.getElementById('messageType').value == 'public') {
     };
     axios(options);
   });
-  var chatHistory = document.getElementById('chat-history');
-  scrollToBottom();
+
+  var _chatHistory = document.getElementById('chat-history');
+
+  _scrollToBottom();
+
   window.Echo["private"]('privateChat.' + conversationId.value).listen('MessagePrivate', function (e) {
     if (e.userId == userIdLogin) {
       privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n        <div class=\"message-data text-right\">\n            <span class=\"message-data-time\">10:10 AM, Today</span>\n            <img src=\"https://bootdey.com/img/Content/avatar/avatar7.png\" alt=\"avatar\">\n        </div>\n        <div class=\"message other-message float-right\">\n          ".concat(e.message, "\n        </div>\n      </li>\n      "); // scrollToBottom();
@@ -2147,7 +2157,7 @@ if (document.getElementById('messageType').value == 'public') {
     } // const chatHistory = document.getElementById('chat-history');
 
 
-    scrollToBottom();
+    _scrollToBottom();
   });
 }
 
