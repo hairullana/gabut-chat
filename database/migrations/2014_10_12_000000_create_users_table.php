@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken()->nullable();
             $table->timestamps();
+            $table->timestamp('last_seen')->nullable();
         });
     }
 

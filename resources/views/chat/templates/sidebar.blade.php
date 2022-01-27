@@ -19,7 +19,15 @@
           <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
           <div class="about">
             <div class="name">{{ $user->username }}</div>
-            <div class="status"> <i class="fa fa-circle offline"></i> left x mins ago</div>
+            <div class="status">
+              @if(Cache::has('user-is-online-' . $user->id))
+                <i class="fa fa-circle online"></i>
+                <span class="text-success">Online</span>
+              @else
+                <i class="fa fa-circle offline"></i>
+                {{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}
+              @endif
+            </div>
           </div>
         </a>
       </li>

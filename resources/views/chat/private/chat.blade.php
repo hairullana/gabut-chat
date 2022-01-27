@@ -13,8 +13,18 @@
             <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
           </a>
           <div class="chat-about">
-            <h6 class="m-b-0">{{ $u->username }}</h6>
-            <small>Last seen: x hours ago</small>
+            <div class="name">
+              <h6 class="mb-0">{{ $u->username }}</h6>
+            </div>
+            <div class="status">
+              @if(Cache::has('user-is-online-' . $u->id))
+                <i class="fa fa-circle online"></i>
+                <small class="text-success">Online</small>
+              @else
+                <i class="fa fa-circle offline"></i>
+                <small>{{ Carbon\Carbon::parse($u->last_seen)->diffForHumans() }}</small>
+              @endif
+            </div>
           </div>
         </div>
       </div>
