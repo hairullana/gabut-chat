@@ -2105,7 +2105,7 @@ if (document.getElementById('messageType').value == 'public') {
   });
   var chatHistory = document.getElementById('messages');
   scrollToBottom();
-  window.Echo.channel('chat').listen('MessagePublic', function (e) {
+  window.Echo.channel('publicChat').listen('MessagePublic', function (e) {
     messages_el.innerHTML += "\n    <div class='message my-2'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n    ");
     scrollToBottom();
   });

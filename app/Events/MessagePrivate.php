@@ -12,23 +12,19 @@ use Illuminate\Queue\SerializesModels;
 
 class MessagePrivate implements ShouldBroadcast
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+  use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $message, $userId, $conversationId;
+  public $message, $userId, $conversationId;
 
-    public function __construct($conversationId, $userId, $message)
-    {
-        $this->conversationId = $conversationId;
-        $this->userId = $userId;
-        $this->message = $message;
-    }
-
-    public function broadcastOn()
-    {
-        return new PrivateChannel('privateChat.' . $this->conversationId);
-    }
-
-    // public function broadcastAs(){
-    //     return 'privateMessage';
-    // }
+  public function __construct($conversationId, $userId, $message)
+  {
+    $this->conversationId = $conversationId;
+    $this->userId = $userId;
+    $this->message = $message;
+  }
+  
+  public function broadcastOn()
+  {
+    return new PrivateChannel('privateChat.' . $this->conversationId);
+  }
 }
