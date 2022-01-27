@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PrivateMessageController;
+use App\Http\Controllers\PublicMessageController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -40,27 +41,9 @@ Route::get('/login', [AuthController::class, 'login'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'loginAction'])->middleware(('guest'));
 Route::get('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
 
-// chat
-Route::get('/chat/public', function() {
-    return view('chat.public.index', [
-        'title' => 'Public Chat',
-        'messages' => PublicMessage::get()
-    ]);
-})->middleware('auth');
-
-Route::post('/send-message', function(Request $request) {
-    PublicMessage::create([
-        'user_id' => Auth::user()->id,
-        'message' => $request->message
-    ]);
-    
-    event(
-        new MessagePublic(
-            $request->username,
-            $request->message
-        )
-    );
-})->middleware('auth');
+// PUBLIC MESSAGE
+Route::get('/chat/public', [PublicMessageController::class, 'index'])->middleware('auth');
+Route::post('/send-message', [PublicMessageController::class, 'sendMessage'])->middleware('auth');
 
 // PRIVATE CHAT
 Route::get('/chat/private', [PrivateMessageController::class, 'indexStartChat'])->middleware('auth');
