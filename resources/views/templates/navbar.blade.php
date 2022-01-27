@@ -26,15 +26,15 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          {{-- <ul class="navbar-nav mr-auto"></ul> --}}
+          <ul class="navbar-nav ml-auto"></ul>
           <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-            <a class="nav-link" href="/chat/private">Private Chat</a>
-            <a class="nav-link" href="/chat/public">Public Chat</a>
+            <a class="nav-link @if($title == 'Home') active @endif" aria-current="page" href="/">Home</a>
             @if (Auth::check())
+              <a class="nav-link @if($title == 'Private Chat') active @endif" href="/chat/private">Private Chat</a>
+              <a class="nav-link @if($title == 'Public Chat') active @endif" href="/chat/public">Public Chat</a>
               <a class="nav-link" href="/logout">Logout</a>
             @else
-              <a class="nav-link" href="/login">Login</a>
+              <a class="nav-link @if($title == 'Login') active @endif" href="/login">Login</a>
             @endif
           </div>
         </div>
