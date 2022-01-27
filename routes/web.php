@@ -26,29 +26,31 @@ use App\Http\Controllers\UserController;
 |
 */
 
+// INDEX
 Route::get('/', function () {
     return view('index', [
         'title' => 'Home'
     ]);
 })->middleware('auth');
 
-// register
+// REGISTER
 Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
 Route::post('/register', [AuthController::class, 'registerAction'])->middleware('guest');
-
-// login
+// LOGIN
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware(('guest'));
 Route::post('/login', [AuthController::class, 'loginAction'])->middleware(('guest'));
 Route::get('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
 
-// PUBLIC MESSAGE
-Route::get('/chat/public', [PublicMessageController::class, 'index'])->middleware('auth');
-Route::post('/send-message', [PublicMessageController::class, 'sendMessage'])->middleware('auth');
-
-// PRIVATE CHAT
-Route::get('/chat/private', [PrivateMessageController::class, 'indexStartChat'])->middleware('auth');
-Route::get('/chat/private/{user:id}', [PrivateMessageController::class, 'index'])->middleware('auth');
-Route::post('/send-private-message', [PrivateMessageController::class, 'sendMessage'])->middleware('auth');
+// CHAT
+Route::middleware('auth')->group(function(){
+  // PUBLIC CHAT
+  Route::get('/chat/public', [PublicMessageController::class, 'index']);
+  Route::post('/send-message', [PublicMessageController::class, 'sendMessage']);
+  // PRIVATE CHAT
+  Route::get('/chat/private', [PrivateMessageController::class, 'indexStartChat']);
+  Route::get('/chat/private/{user:id}', [PrivateMessageController::class, 'index']);
+  Route::post('/send-private-message', [PrivateMessageController::class, 'sendMessage']);
+});
 
 // admin/user
 Route::resource('/admin/user', UserController::class)->middleware('auth');
