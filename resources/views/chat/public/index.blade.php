@@ -9,11 +9,15 @@
         <input type="hidden" name="username" id="username" value="{{ Auth::user()->username }}">
     </header>
 
-    <div id="messages"></div>
+    <div id="messages">
+      @foreach ($messages as $message)
+        <div class='message my-2'><strong>{{ $message->user->username }}:</strong> {{ $message->message }}</div>
+      @endforeach
+    </div>
 
     <form id="message_form">
-        <input type="text" name="message" id="message_input" placeholder="Message" autocomplete="off">
-        <button id="message_send">Send</button>
+      <input type="text" name="message" id="message_input" placeholder="Message" autocomplete="off">
+      <button id="message_send">Send</button>
     </form>
   </div>
 

@@ -2,15 +2,16 @@
 
 use App\Models\User;
 use App\Models\Message;
+use App\Models\Conversation;
 use Illuminate\Http\Request;
 use App\Events\MessagePublic;
 use Illuminate\Http\Response;
 use App\Events\MessagePrivate;
+use App\Models\PublicMessage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Models\Conversation;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,11 +42,17 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
 // chat
 Route::get('/chat/public', function() {
     return view('chat.public.index', [
-        'title' => 'Public Chat'
+        'title' => 'Public Chat',
+        'messages' => PublicMessage::get()
     ]);
 })->middleware('auth');
 
 Route::post('/send-message', function(Request $request) {
+    PublicMessage::create([
+        'user_id' => Auth::user()->id,
+        'message' => $request->message
+    ]);
+    
     event(
         new MessagePublic(
             $request->username,
