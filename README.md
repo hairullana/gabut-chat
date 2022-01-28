@@ -35,18 +35,6 @@ cd gabut-chat
 ```bash
 php artisan migrate:fresh
 ```
-- Install Laravel UI
-```bash
-composer require laravel/ui --dev
-```
-- Install Auth Scaffolding `(ALWAYS CHOOSE NO because we already have a login and register page)`
-```bash
-php artisan ui vue --auth
-```
-- Install and Run NPM
-```bash
-npm i && npm run dev
-```
 - Run Laravel Server
 ```bash
 php artisan serve
