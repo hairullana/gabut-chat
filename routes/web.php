@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function(){
   Route::post('/send-message', [PublicMessageController::class, 'sendMessage']);
   // PRIVATE CHAT
   Route::get('/chat/private', [PrivateMessageController::class, 'indexStartChat']);
+  Route::post('/chat/private', [PrivateMessageController::class, 'search']);
   Route::get('/chat/private/{user:username}', [PrivateMessageController::class, 'index']);
   Route::post('/send-private-message', [PrivateMessageController::class, 'sendMessage']);
 });

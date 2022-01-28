@@ -57,7 +57,7 @@ class PrivateMessageController extends Controller
     $this->conversations = Conversation::where('user_one', Auth::user()->id)
               ->orWhere('user_two', Auth::user()->id)
               ->get();
-              
+
     return view('chat.private.index', [
       'title' => 'Private Chat',
       'conversations' => $this->conversations
@@ -77,5 +77,13 @@ class PrivateMessageController extends Controller
         $request->message
       )
     );
+  }
+
+  public function search(Request $request){
+    if(User::where('username', $request->username)->count() === 0){
+      return back()->with('error', 'User not found!');
+    }
+    
+    return redirect('/chat/private/' . $request->username);
   }
 }
