@@ -13,8 +13,15 @@
     <input type="text" class="form-control" placeholder="Search...">
   </div>
   <ul class="list-unstyled chat-list mt-2 mb-0">
-    @foreach ($users as $user)
+    @foreach ($conversations as $conversation)
       <li class="clearfix">
+        <?php
+          if ($conversation->user_one != Auth::user()->id){
+            $user = App\Models\User::find($conversation->user_one);
+          }else{
+            $user = App\Models\User::find($conversation->user_two);
+          }
+        ?>
         <a href="/chat/private/{{ $user->username }}">
           <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
           <div class="about">

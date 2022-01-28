@@ -59,7 +59,7 @@
   {{-- message form --}}
   <div class="chatMessageClearfix">
     <form id="privateMessageForm">
-      <input type="hidden" name="conversation_id" id="conversationId" value="{{ $conversation->id }}">
+      <input type="hidden" name="conversation_id" id="conversationId" value="{{ $conversationId }}">
       <input type="hidden" name="user_id" id="userId" value="{{ Auth::user()->id }}">
       <div class="input-group mb-1">
         <input type="text" name="message" id="privateMessageInput" class="form-control" placeholder="Enter text here..." autocomplete="off">                                    

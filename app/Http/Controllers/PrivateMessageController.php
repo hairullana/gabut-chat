@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 class PrivateMessageController extends Controller
 {
+  public $conversations;
+
   public function index(User $user){
     $id1 = User::find(Auth::user()->id)->id;
     $id2 = $user->id;
@@ -31,24 +33,34 @@ class PrivateMessageController extends Controller
       $conversation = Conversation::latest()->first();
     }
 
+    $conversationId = $conversation->id;
+
     $messages = Message::where(function($query) use ($id2){
                   $query->where('user_id', Auth::user()->id)
                   ->orWhere('user_id', $id2);
                 })->where('conversation_id', $conversation->id)->get();
+    
+    $this->conversations = Conversation::where('user_one', Auth::user()->id)
+              ->orWhere('user_two', Auth::user()->id)
+              ->get();
 
-    return view('chat..private.chat', [
+    return view('chat.private.chat', [
       'title' => 'Private Chat',
       'u' => User::find($id2),
-      'users' => User::where('id', '!=', Auth::user()->id)->latest()->get(),
-      'conversation' => $conversation,
+      'conversations' => $this->conversations,
+      'conversationId' => $conversationId,
       'messages' => $messages
     ]);
   }
 
   public function indexStartChat(){
+    $this->conversations = Conversation::where('user_one', Auth::user()->id)
+              ->orWhere('user_two', Auth::user()->id)
+              ->get();
+              
     return view('chat.private.index', [
       'title' => 'Private Chat',
-      'users' => User::where('id', '!=', Auth::user()->id)->latest()->get()
+      'conversations' => $this->conversations
     ]);
   }
 

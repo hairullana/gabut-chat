@@ -34,7 +34,7 @@ cd gabut-chat
 ```bash
 composer install
 ```
-- Create and `Setup` .env file
+- Create and `Setup` .env file (DB, Pusher)
 ```bash
 cp .env.example .env
 ```
@@ -42,7 +42,7 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 ```
-- Migration Databaase
+- Migration Database
 ```bash
 php artisan migrate:fresh
 ```
