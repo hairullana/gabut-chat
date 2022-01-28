@@ -17,7 +17,6 @@ Gabut Chat is a real time chat application using Pusher Websocket. "Gabut" comes
 - <a href="https://getcomposer.org/">Composer (Dependency Manager for PHP)</a>
 - <a href="https://laravel.com/">Laravel 8 (Backend)</a>
 - <a href="https://getbootstrap.com/">Bootstrap 4.5.0 (Frontend)</a>
-- <a href="https://nodejs.org/">Node JS</a>
 - <a href="https://pusher.com/">Pusher (Websocket)</a>
 - <a href="https://www.postgresql.org/">PostgreSQL (Database)</a>
 <br>
@@ -30,6 +29,18 @@ git clone https://github.com/hairullana/gabut-chat
 - Change directory
 ```bash
 cd gabut-chat
+```
+- Install Composer
+```bash
+composer install
+```
+- Create and `Setup` .env file
+```bash
+cp .env.example .env
+```
+- Generate Key
+```bash
+php artisan key:generate
 ```
 - Migration Databaase
 ```bash
