@@ -142,10 +142,14 @@ h1.title {
   position: absolute;
   top: 50%;
   left: 40%;
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
 
 .people-list {
+  -moz-transition: .5s;
+  -o-transition: .5s;
+  -webkit-transition: .5s;
   transition: .5s
 }
 
@@ -386,5 +390,4 @@ h1.title {
 .row {
   margin: 0 !important;
 }
-
 

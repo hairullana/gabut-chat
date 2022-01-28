@@ -6,13 +6,11 @@ Still in Coding! `Feel free to fork, clone or contribute :)`
 ## <b>About Gabut Chat</b>
 Gabut Chat is a real time chat application using Pusher Websocket. "Gabut" comes from Indonesian which means "no activity" where I made this because I have no activity and want to increase my knowledge about web development.
 <br>
-<br>
 
 ## <b>Features</b>
 - Authentication (Login, Register)
 - Public & Private Channel (Chat Channel)
 - Online Status
-<br>
 <br>
 
 ## <b>Technology</b>
@@ -22,7 +20,6 @@ Gabut Chat is a real time chat application using Pusher Websocket. "Gabut" comes
 - <a href="https://nodejs.org/">Node JS</a>
 - <a href="https://pusher.com/">Pusher (Websocket)</a>
 - <a href="https://www.postgresql.org/">PostgreSQL (Database)</a>
-<br>
 <br>
 
 ## <b>Installation</b>
@@ -42,7 +39,7 @@ php artisan migrate:fresh
 ```bash
 composer require laravel/ui --dev
 ```
-- Install Auth Scaffolding `(ALWAYS CHOOSE NO because because we already have a login and register page)`
+- Install Auth Scaffolding `(ALWAYS CHOOSE NO because we already have a login and register page)`
 ```bash
 php artisan ui vue --auth
 ```
