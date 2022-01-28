@@ -48,7 +48,7 @@ if(document.getElementById('messageType').value == 'public'){
   }
   scrollToBottom();
 
-  window.Echo.channel('chat').listen('MessagePublic', (e) => {
+  window.Echo.channel('publicChat').listen('MessagePublic', (e) => {
     messages_el.innerHTML += `
     <div class='message my-2'><strong> ${e.username}:</strong> ${e.message}</div>
     `
