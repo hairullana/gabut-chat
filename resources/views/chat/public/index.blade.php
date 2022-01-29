@@ -11,7 +11,11 @@
 
     <div id="messages">
       @foreach ($messages as $message)
-        <div class='message my-2'><strong>{{ $message->user->username }}:</strong> {{ $message->message }}</div>
+        @if ($message->user_id == Auth::user()->id)
+          <div class='message my-message my-2'><strong>{{ $message->user->username }}:</strong> {{ $message->message }}</div>
+        @else
+          <div class='message other-message my-2'><strong>{{ $message->user->username }}:</strong> {{ $message->message }}</div>
+        @endif
       @endforeach
     </div>
 

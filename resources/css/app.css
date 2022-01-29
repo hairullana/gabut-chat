@@ -29,7 +29,7 @@ input {
 .app {
   display: flex;
   flex-direction: column;
-  height: 91vh;
+  height: 92vh;
 }
 
 header {
@@ -37,11 +37,9 @@ header {
   padding-top: 32px;
   padding-bottom: 32px;
   background-color: #101522;
-  /* background-image: linear-gradient(to bottom, #101522, #202020); */
   align-items: center;
   justify-content: flex-end;
   flex-direction: column;
-  /* box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); */
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -292,12 +290,12 @@ h1.title {
   margin-left: -10px
 }
 
-.chat .chat-history .my-message {
+.chat .chat-history .my-message, .my-message {
   background: #abbaff;
   text-align: right
 }
 
-.chat .chat-history .my-message:after {
+.chat .chat-history .my-message:after, .my-message:after {
   border-bottom-color: #abbaff;
   left: 93%
 }

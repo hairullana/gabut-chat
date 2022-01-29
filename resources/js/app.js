@@ -119,7 +119,6 @@ if(document.getElementById('messageType').value == 'public'){
         </div>
       </li>
       `
-      // scrollToBottom();
     } else {
       privateMessageElement.innerHTML += `
       <li class="clearfix">
@@ -130,9 +129,7 @@ if(document.getElementById('messageType').value == 'public'){
       </li>
       `
     }
-    // const chatHistory = document.getElementById('chat-history');
-    scrollToBottom();
-
     
+    scrollToBottom();
   })
 }
