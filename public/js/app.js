@@ -5262,6 +5262,8 @@ var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+var toxicWords = ['bitch', 'keparat', 'fuck', 'bastard', 'anjing', 'babi', 'pantek', 'bajingan', 'coli', 'colmek', 'pukimak', 'lonte', 'dongo', 'biadab', 'biadap', 'ngocok', 'toket', 'tempek', 'tomlol', 'henceut', 'kanjut', 'oppai', 'tetek', 'kanyut', 'itil', 'titit', 'tytyd', 'tolol', 'idiot', 'bangsat', 'bangsad', 'pucek', 'kontol', 'pantek', 'memek', 'puki', 'jembut', 'meki', 'jingan', 'bodoh', 'goblok', 'bokep', 'dajjal', 'silit', 'setan', 'sange', 'jancok', 'dancok', 'goblog', 'autis', 'bagong', 'peler', 'ngentot', 'ngentod', 'ngewe', 'pler', 'ngtd', 'kntl', 'ajg', 'njing', 'njeng', 'xnxx', 'xvideos', 'crot'];
+
 if (document.getElementById('messageType').value == 'public') {
   var scrollToBottom = function scrollToBottom() {
     chatHistory.scrollTop = chatHistory.scrollHeight;
@@ -5283,6 +5285,13 @@ if (document.getElementById('messageType').value == 'public') {
 
     if (message_input.value == '') {
       alert('Please enter a message');
+      has_errors = true;
+    }
+
+    if (toxicWords.some(function (v) {
+      return message_input.value === v;
+    })) {
+      alert('Speak a good word or remain silent.');
       has_errors = true;
     }
 
@@ -5323,6 +5332,13 @@ if (document.getElementById('messageType').value == 'public') {
 
     if (privateMessageInput.value == '') {
       alert('Please enter a message');
+      has_errors = true;
+    }
+
+    if (toxicWords.some(function (v) {
+      return privateMessageInput.value === v;
+    })) {
+      alert('Speak a good word or remain silent.');
       has_errors = true;
     }
 
