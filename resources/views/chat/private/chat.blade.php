@@ -37,18 +37,11 @@
       @foreach ($messages as $message)
         @if ($message->user_id == Auth::user()->id)
           <li class="clearfix">
-            <div class="message-data text-right">
-              <span class="message-data-time">{{ date_format($message->created_at, "H:i (d M Y)") }}</span>
-              <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="avatar">
-            </div>
-            <div class="message other-message float-right">{{ $message->message }}</div>
+            <div class="message my-message float-right">{{ $message->message }}</div>
           </li>
         @else
           <li class="clearfix">
-            <div class="message-data">
-              <span class="message-data-time">{{ date_format($message->created_at, "H:i (d M Y)") }}</span>
-            </div>
-            <div class="message my-message">{{ $message->message }}</div>                                    
+            <div class="message other-message">{{ $message->message }}</div>                                    
           </li>
         @endif
       @endforeach

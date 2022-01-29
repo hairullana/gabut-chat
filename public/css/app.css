@@ -270,11 +270,11 @@ h1.title {
   margin-left: -10px
 }
 
-.chat .chat-history .my-message {
-  background: #efefef
+.chat .chat-history .other-message {
+  background: #ececec
 }
 
-.chat .chat-history .my-message:after {
+.chat .chat-history .other-message:after {
   bottom: 100%;
   left: 30px;
   border: solid transparent;
@@ -288,13 +288,13 @@ h1.title {
   margin-left: -10px
 }
 
-.chat .chat-history .other-message {
-  background: #e8f1f3;
+.chat .chat-history .my-message {
+  background: #abbaff;
   text-align: right
 }
 
-.chat .chat-history .other-message:after {
-  border-bottom-color: #e8f1f3;
+.chat .chat-history .my-message:after {
+  border-bottom-color: #abbaff;
   left: 93%
 }
 
