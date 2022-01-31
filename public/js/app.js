@@ -5366,7 +5366,7 @@ if (document.getElementById('messageType').value == 'public') {
     if (e.userId == userIdLogin) {
       privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n        <div class=\"message my-message float-right\">\n        ".concat(e.message, "\n        </div>\n      </li>\n      ");
     } else {
-      privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n          <div class=\"message-data\">\n              <span class=\"message-data-time\">10:15 AM, Today</span>\n          </div>\n          <div class=\"message my-message\">".concat(e.message, "</div>\n      </li>\n      ");
+      privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n          <div class=\"message other-message\">".concat(e.message, "</div>\n      </li>\n      ");
     }
 
     _scrollToBottom();

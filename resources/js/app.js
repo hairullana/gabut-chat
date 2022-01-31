@@ -122,10 +122,7 @@ if(document.getElementById('messageType').value == 'public'){
     } else {
       privateMessageElement.innerHTML += `
       <li class="clearfix">
-          <div class="message-data">
-              <span class="message-data-time">10:15 AM, Today</span>
-          </div>
-          <div class="message my-message">${e.message}</div>
+          <div class="message other-message">${e.message}</div>
       </li>
       `
     }
