@@ -5376,7 +5376,21 @@ if (document.getElementById('messageType').value == 'public') {
 }
 
 window.Echo["private"]('notif.' + userIdLogin).listen('Notif', function (e) {
-  console.log('new chat notification');
+  var Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: function didOpen(toast) {
+      toast.addEventListener('mouseenter', Swal.stopTimer);
+      toast.addEventListener('mouseleave', Swal.resumeTimer);
+    }
+  });
+  Toast.fire(swalOption = {
+    icon: 'success',
+    title: 'new message from ' + e.senderId
+  });
 });
 
 /***/ }),

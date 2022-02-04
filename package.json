@@ -20,6 +20,7 @@
     },
     "dependencies": {
         "laravel-echo": "^1.11.3",
-        "pusher-js": "^7.0.3"
+        "pusher-js": "^7.0.3",
+        "sweetalert2": "^11.3.10"
     }
 }

@@ -1,5 +1,6 @@
 const { default: axios } = require('axios');
 
+
 require('./bootstrap');
 
 const toxicWords = ['bitch','keparat','fuck','bastard','anjing','babi','pantek','bajingan','coli','colmek','pukimak','lonte','dongo','biadab','biadap','ngocok','toket','tempek','tomlol','henceut','kanjut','oppai','tetek','kanyut','itil','titit','tytyd','tolol','idiot','bangsat','bangsad','pucek','kontol','pantek','memek','puki','jembut','meki','jingan','bodoh','goblok','bokep','dajjal','silit','setan','sange','jancok','dancok','goblog','autis','bagong','peler','ngentot','ngentod','ngewe','pler','ngtd','kntl','ajg','njing','njeng','xnxx','xvideos','crot'];
@@ -133,6 +134,22 @@ if(document.getElementById('messageType').value == 'public'){
   })
 }
 
+
 window.Echo.private('notif.' + userIdLogin).listen('Notif', function(e){
-  console.log('new chat notification')
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+  Toast.fire(swalOption = {
+    icon: 'success',
+    title: 'new message from ' + e.senderId
+  })
 });

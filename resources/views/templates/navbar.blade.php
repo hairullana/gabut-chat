@@ -13,6 +13,9 @@
 
     <link rel="stylesheet" href="/css/app.css">
 
+    {{-- swal --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>{{ $title }} - Gaboet</title>
 
     @if (Auth::check())
