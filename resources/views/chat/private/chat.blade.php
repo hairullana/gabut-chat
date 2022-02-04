@@ -55,6 +55,7 @@
       <input type="hidden" name="receiver_id" id="receiverId" value="{{ $u->id }}">
       <input type="hidden" name="conversation_id" id="conversationId" value="{{ $conversationId }}">
       <input type="hidden" name="user_id" id="userId" value="{{ Auth::user()->id }}">
+      <input type="hidden" name="user_name" id="userName" value="{{ Auth::user()->username }}">
       <div class="input-group mb-1">
         <input type="text" name="message" id="privateMessageInput" class="form-control" placeholder="Enter text here..." autocomplete="off">                                    
         <div class="input-group-prepend">

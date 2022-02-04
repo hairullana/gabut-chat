@@ -5327,6 +5327,7 @@ if (document.getElementById('messageType').value == 'public') {
   var conversationId = document.getElementById('conversationId');
   var receiverId = document.getElementById('receiverId');
   var userId = document.getElementById('userId');
+  var userUsername = document.getElementById('userName');
   privateMessageForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var has_errors = false;
@@ -5353,6 +5354,7 @@ if (document.getElementById('messageType').value == 'public') {
       data: {
         conversation_id: conversationId.value,
         sender_id: userId.value,
+        sender_username: userUsername.value,
         message: privateMessageInput.value,
         receiver_id: receiverId.value
       }
@@ -5389,7 +5391,7 @@ window.Echo["private"]('notif.' + userIdLogin).listen('Notif', function (e) {
   });
   Toast.fire(swalOption = {
     icon: 'success',
-    title: 'new message from ' + e.senderId
+    title: 'new message from ' + e.senderUserName
   });
 });
 

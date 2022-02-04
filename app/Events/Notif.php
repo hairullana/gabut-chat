@@ -20,11 +20,12 @@ class Notif implements ShouldBroadcast
      * @return void
      */
 
-    public $senderId, $receiverId;
+    public $senderId, $senderUserName , $receiverId;
 
-    public function __construct($senderId, $receiverId)
+    public function __construct($senderId, $senderUserName, $receiverId)
     {
         $this->senderId = $senderId;
+        $this->senderUserName = $senderUserName;
         $this->receiverId = $receiverId;
     }
 

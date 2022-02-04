@@ -75,6 +75,7 @@ class PrivateMessageController extends Controller
     event(
       new Notif(
         $request->sender_id,
+        $request->sender_username,
         $request->receiver_id
       )
     );
