@@ -5325,6 +5325,7 @@ if (document.getElementById('messageType').value == 'public') {
   var privateMessageInput = document.getElementById('privateMessageInput');
   var privateMessageForm = document.getElementById('privateMessageForm');
   var conversationId = document.getElementById('conversationId');
+  var receiverId = document.getElementById('receiverId');
   var userId = document.getElementById('userId');
   privateMessageForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -5351,8 +5352,9 @@ if (document.getElementById('messageType').value == 'public') {
       url: '/send-private-message',
       data: {
         conversation_id: conversationId.value,
-        user_id: userId.value,
-        message: privateMessageInput.value
+        sender_id: userId.value,
+        message: privateMessageInput.value,
+        receiver_id: receiverId.value
       }
     };
     axios(options);
@@ -5363,7 +5365,7 @@ if (document.getElementById('messageType').value == 'public') {
   _scrollToBottom();
 
   window.Echo["private"]('privateChat.' + conversationId.value).listen('MessagePrivate', function (e) {
-    if (e.userId == userIdLogin) {
+    if (e.senderId == userIdLogin) {
       privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n        <div class=\"message my-message float-right\">\n        ".concat(e.message, "\n        </div>\n      </li>\n      ");
     } else {
       privateMessageElement.innerHTML += "\n      <li class=\"clearfix\">\n          <div class=\"message other-message\">".concat(e.message, "</div>\n      </li>\n      ");
@@ -5372,6 +5374,10 @@ if (document.getElementById('messageType').value == 'public') {
     _scrollToBottom();
   });
 }
+
+window.Echo["private"]('notif.' + userIdLogin).listen('Notif', function (e) {
+  console.log('new chat notification');
+});
 
 /***/ }),
 

@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('privateChat.{id}', function ($user, $id) {
     return true;
 });
+
+Broadcast::channel('notif.{id}', function ($user, $id) {
+    return true;
+});

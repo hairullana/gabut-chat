@@ -7,6 +7,7 @@ use App\Models\Message;
 use App\Models\Conversation;
 use Illuminate\Http\Request;
 use App\Events\MessagePrivate;
+use App\Events\Notif;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,16 +68,25 @@ class PrivateMessageController extends Controller
   public function sendMessage(Request $request){
     Message::create([
       'conversation_id' => $request->conversation_id,
-      'user_id' => $request->user_id,
+      'user_id' => $request->sender_id,
       'message' => $request->message
     ]);
+    
+    event(
+      new Notif(
+        $request->sender_id,
+        $request->receiver_id
+      )
+    );
+    
     event(
       new MessagePrivate(
         $request->conversation_id,
-        $request->user_id,
+        $request->sender_id,
         $request->message
       )
     );
+
   }
 
   public function search(Request $request){

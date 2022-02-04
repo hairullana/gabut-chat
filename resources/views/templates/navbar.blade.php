@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="/css/app.css">
 
     <title>{{ $title }} - Gaboet</title>
+
+    @if (Auth::check())
+      <script>
+        const userIdLogin = "{{ Auth::user()->id }}"
+      </script>
+    @endif
   </head>
   <body>
     {{-- font awesome --}}

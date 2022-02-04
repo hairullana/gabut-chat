@@ -14,12 +14,12 @@ class MessagePrivate implements ShouldBroadcast
 {
   use Dispatchable, InteractsWithSockets, SerializesModels;
 
-  public $message, $userId, $conversationId;
+  public $message, $senderId, $conversationId;
 
-  public function __construct($conversationId, $userId, $message)
+  public function __construct($conversationId, $senderId, $message)
   {
     $this->conversationId = $conversationId;
-    $this->userId = $userId;
+    $this->senderId = $senderId;
     $this->message = $message;
   }
   

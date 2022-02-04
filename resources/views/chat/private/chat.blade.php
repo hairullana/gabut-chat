@@ -52,6 +52,7 @@
   {{-- message form --}}
   <div class="chatMessageClearfix">
     <form id="privateMessageForm">
+      <input type="hidden" name="receiver_id" id="receiverId" value="{{ $u->id }}">
       <input type="hidden" name="conversation_id" id="conversationId" value="{{ $conversationId }}">
       <input type="hidden" name="user_id" id="userId" value="{{ Auth::user()->id }}">
       <div class="input-group mb-1">
@@ -64,9 +65,6 @@
   </div>
   {{-- end message form --}}
 
-  <script>
-    const userIdLogin = "{{ Auth::user()->id }}"
-  </script>
   <script src="/js/app.js"></script>
   <script>
     document.getElementById('privateMessageForm').addEventListener('submit', function() {

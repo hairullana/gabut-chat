@@ -67,6 +67,7 @@ if(document.getElementById('messageType').value == 'public'){
   const privateMessageInput = document.getElementById('privateMessageInput');
   const privateMessageForm = document.getElementById('privateMessageForm');
   const conversationId = document.getElementById('conversationId');
+  const receiverId = document.getElementById('receiverId');
   const userId = document.getElementById('userId');
   
   privateMessageForm.addEventListener('submit', function(e) {
@@ -93,8 +94,9 @@ if(document.getElementById('messageType').value == 'public'){
       url: '/send-private-message',
       data: {
         conversation_id: conversationId.value,
-        user_id: userId.value,
+        sender_id: userId.value,
         message: privateMessageInput.value,
+        receiver_id: receiverId.value
       }
     }
   
@@ -111,7 +113,7 @@ if(document.getElementById('messageType').value == 'public'){
   
 
   window.Echo.private('privateChat.' + conversationId.value).listen('MessagePrivate', function(e) {
-    if(e.userId == userIdLogin){
+    if(e.senderId == userIdLogin){
       privateMessageElement.innerHTML += `
       <li class="clearfix">
         <div class="message my-message float-right">
@@ -130,3 +132,7 @@ if(document.getElementById('messageType').value == 'public'){
     scrollToBottom();
   })
 }
+
+window.Echo.private('notif.' + userIdLogin).listen('Notif', function(e){
+  console.log('new chat notification')
+});
