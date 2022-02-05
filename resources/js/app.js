@@ -57,9 +57,15 @@ if(document.getElementById('messageType').value == 'public'){
   scrollToBottom();
 
   window.Echo.channel('publicChat').listen('MessagePublic', (e) => {
-    messages_el.innerHTML += `
-    <div class='message my-2'><strong> ${e.username}:</strong> ${e.message}</div>
-    `
+    if(e.username == username_input.value){
+      messages_el.innerHTML += `
+      <div class='message my-message my-2'>${e.message} <strong>:${e.username}</strong></div>
+      `
+    }else {
+      messages_el.innerHTML += `
+      <div class='message other-message my-2'><strong> ${e.username}:</strong> ${e.message}</div>
+      `
+    }
     scrollToBottom();
   });
 } else if(document.getElementById('messageType').value == 'private') {

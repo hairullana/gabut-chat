@@ -5312,7 +5312,12 @@ if (document.getElementById('messageType').value == 'public') {
   var chatHistory = document.getElementById('messages');
   scrollToBottom();
   window.Echo.channel('publicChat').listen('MessagePublic', function (e) {
-    messages_el.innerHTML += "\n    <div class='message my-2'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n    ");
+    if (e.username == username_input.value) {
+      messages_el.innerHTML += "\n      <div class='message my-message my-2'>".concat(e.message, " <strong>:").concat(e.username, "</strong></div>\n      ");
+    } else {
+      messages_el.innerHTML += "\n      <div class='message other-message my-2'><strong> ".concat(e.username, ":</strong> ").concat(e.message, "</div>\n      ");
+    }
+
     scrollToBottom();
   });
 } else if (document.getElementById('messageType').value == 'private') {

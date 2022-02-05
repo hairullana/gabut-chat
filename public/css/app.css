@@ -117,7 +117,7 @@ h1.title {
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
 }
 .chat-app .people-list {
-  width: 280px;
+  width: 20%;
   position: absolute;
   left: 0;
   top: 0;
