@@ -11,12 +11,14 @@ Gabut Chat is a real time chat application using Pusher Websocket. "Gabut" comes
 - Authentication (Login, Register)
 - Public & Private Channel (Chat Channel)
 - Online Status
+- Notification alert
 <br>
 
 ## <b>Technology</b>
 - <a href="https://getcomposer.org/">Composer (Dependency Manager for PHP)</a>
 - <a href="https://laravel.com/">Laravel 8 (Backend)</a>
 - <a href="https://getbootstrap.com/">Bootstrap 4.5.0 (Frontend)</a>
+- <a href="https://sweetalert2.github.io/">Sweetalert2</a>
 - <a href="https://pusher.com/">Pusher (Websocket)</a>
 - <a href="https://www.postgresql.org/">PostgreSQL (Database)</a>
 <br>
