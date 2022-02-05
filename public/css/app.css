@@ -214,7 +214,7 @@ h1.title {
   padding: 20px;
   border-bottom: 2px solid #fff;
   overflow-y: auto;
-  height: 78vh;
+  height: 70vh;
 }
 
 .chat .chat-history ul {
@@ -333,6 +333,12 @@ h1.title {
   height: 0
 }
 
+@media only screen and (max-width: 480px) {
+  .chat .chat-history {
+    height: 75vh;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .chat-app .people-list {
       height: 90vh;
@@ -363,6 +369,7 @@ h1.title {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 992px) {
+  
   .chat-app .chat-list {
       /* height: 650px; */
       overflow-x: auto
