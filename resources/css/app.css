@@ -357,10 +357,14 @@ h1.title {
     display: none;
   }
   .chat-app .people-list .about {
-    display: none;
+    padding-left: 0px;
+    text-align: center !important;
+  }
+  .chat-app .people-list .about .name {
+    font-size: 10px;
   }
   .chat-app .people-list.open {
-      left: 0
+    font-size: 10px !important;
   }
   
   .chat-app .chat .chat-header {
